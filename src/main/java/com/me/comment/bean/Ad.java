@@ -3,7 +3,7 @@ package com.me.comment.bean;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@JsonInclude(Include.NON_NULL) //springmvc中的标注，是为了控制返回的json字符串显示哪些字段。这里的设置是为null的字段不显示
+@JsonInclude(Include.NON_NULL) //值为null的字段不被包括到json对象里
 public class Ad extends BaseBean {
     private Long id;
     private String title;

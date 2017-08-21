@@ -54,7 +54,8 @@
 										<td>${item.title}</td>
 										<td>${item.link}</td>
 										<td>
-			
+												<a href="javascript:void(0);" onclick="modifyInit('${item.id}')">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;
+												<a href="javascript:void(0);" onclick="remove('${item.id}')">删除</a>
 										</td>
 									</tr>
 								</c:forEach>

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,11 +16,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.me.comment.bean.Ad;
+import com.me.comment.bean.Page;
 import com.me.comment.dto.AdDto;
 import com.me.comment.dto.BusinessDto;
 import com.me.comment.dto.BusinessListDto;
 import com.me.comment.dto.CommentListDto;
 import com.me.comment.dto.OrdersDto;
+import com.me.comment.service.AdService;
 
 /**
  *  提供api接口测试数据
@@ -29,11 +33,17 @@ import com.me.comment.dto.OrdersDto;
 @RequestMapping("/api")
 public class APIController {
 
+	@Value("${ad.number}")
+	private int adNumber;
+	
+	@Autowired
+	private AdService adService;
+	
 	@RequestMapping(value="/homead",method=RequestMethod.GET)
 	public List<AdDto> homead() throws JsonParseException, JsonMappingException, IOException{
-		ObjectMapper mapper = new ObjectMapper();//强大的json解析工具
-		String data = "[{\"title\":\"暑假5折\",\"img\":\"http://images2015.cnblogs.com/blog/138012/201610/138012-20161016191639092-2000037796.png\",\"link\":\"http://www.imooc.com/wap/index\"},{\"title\":\"特价出国\",\"img\":\"http://images2015.cnblogs.com/blog/138012/201610/138012-20161016191648124-298129318.png\",\"link\":\"http://www.imooc.com/wap/index\"},{\"title\":\"亮亮车\",\"img\":\"http://images2015.cnblogs.com/blog/138012/201610/138012-20161016191653983-1962772127.png\",\"link\":\"http://www.imooc.com/wap/index\"},{\"title\":\"学钢琴\",\"img\":\"http://images2015.cnblogs.com/blog/138012/201610/138012-20161016191700420-1584459466.png\",\"link\":\"http://www.imooc.com/wap/index\"},{\"title\":\"电影\",\"img\":\"http://images2015.cnblogs.com/blog/138012/201610/138012-20161016191706733-367929553.png\",\"link\":\"http://www.imooc.com/wap/index\"},{\"title\":\"旅游热线\",\"img\":\"http://images2015.cnblogs.com/blog/138012/201610/138012-20161016191713186-495002222.png\",\"link\":\"http://www.imooc.com/wap/index\"}]";
-		return mapper.readValue(data, new TypeReference<List<AdDto>>() {});
+		AdDto adDto = new AdDto();
+		adDto.getPage().setPageNumber(adNumber);
+		return adService.searchByPage(adDto);
 	}
 	
 	@RequestMapping(value="/homelist/{city}/{page}",method=RequestMethod.GET)

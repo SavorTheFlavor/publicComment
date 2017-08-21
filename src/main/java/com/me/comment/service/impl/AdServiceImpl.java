@@ -23,6 +23,9 @@ public class AdServiceImpl implements AdService {
 	
 	@Value("${adImageSavePath}")
 	private String adImageSavePath;
+
+	@Value("${adImageUrl}")
+	private String adImageUrl;
 	
 	@Override
 	//TODO 可以提供更详细的返回信息
@@ -63,6 +66,7 @@ public class AdServiceImpl implements AdService {
 			AdDto adDto2 = new AdDto();
 			result.add(adDto2);
 			BeanUtils.copyProperties(ad, adDto2);
+			adDto2.setImg(adImageUrl+ad.getImgFileName());
 		}
 		return result;
 	}
