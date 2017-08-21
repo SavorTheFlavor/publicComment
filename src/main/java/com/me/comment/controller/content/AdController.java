@@ -40,12 +40,14 @@ public class AdController {
 		return "/content/adAdd";
 	}
 	
-	public String remove(@RequestParam("id")Long id){		//用封装的对象接收对应属性值可以通过反射获取
+	@RequestMapping("/remove")
+	public String remove(@RequestParam("id")Long id){		//用封装的对象接收对应属性值是通过反射获取到对应的属性名再set进去的
 																							//但如果只是一个基本类型反射就获取不了了
 																						//RequestParam必须要写！
 																					//Spring是通过读取class文件里的调试信息
 																				//来获取变量名的，如果编译时不生成调试信息的话就挂了
-		return "forword:/ad";												
+		adService.delete(id);
+		return "forward:/ad";												
 	}
 	
 	@RequestMapping("/search")

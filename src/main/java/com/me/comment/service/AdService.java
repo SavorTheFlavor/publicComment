@@ -16,4 +16,9 @@ public interface AdService {
 	 * @param adDto
 	 */
 	List<AdDto> searchByPage(AdDto adDto);
+	
+	/**
+	 * 删除广告
+	 */
+	boolean delete(Long id);
 }

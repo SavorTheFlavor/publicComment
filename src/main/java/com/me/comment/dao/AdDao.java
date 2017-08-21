@@ -7,4 +7,5 @@ import com.me.comment.bean.Ad;
 public interface AdDao {
 	int insert(Ad ad);
 	List<Ad> selectByPage(Ad condition);
+	int delete(Long id);
 }

@@ -71,4 +71,14 @@ public class AdServiceImpl implements AdService {
 		return result;
 	}
 
+	@Override
+	public boolean delete(Long id) {
+		try {
+			adDao.delete(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 }

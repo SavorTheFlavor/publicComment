@@ -19,4 +19,8 @@
 		order by weight desc,id
 	</select>
 	
+	<delete id="delete">
+		delete from ad where id = #{id}
+	</delete>
+	
 </mapper>

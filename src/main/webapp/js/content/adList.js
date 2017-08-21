@@ -7,7 +7,7 @@ function search(currentPage) {
 	$("#mainForm").submit();
 }
 
-function remove(id) {
+function remove2(id) {
 	if(confirm("确定要删除这条广告吗？")) {
 		$("#id").val(id);
 		$("#mainForm").attr("action",$("#basePath").val() + "/ad/remove");
