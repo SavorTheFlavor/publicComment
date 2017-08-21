@@ -3,11 +3,12 @@ var common = window.common || {};
 /**
  * 展示指定的消息内容。
  */
-common.showMessage = function(msg) {
+common.showMessage = function(){
 	if(msg) {
 		alert(msg);
 	}
 }
+
 
 /**
  * 对jQuery的ajax方法的二次封装

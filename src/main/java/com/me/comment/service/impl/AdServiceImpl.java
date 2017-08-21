@@ -22,6 +22,7 @@ public class AdServiceImpl implements AdService {
 	private String adImageSavePath;
 	
 	@Override
+	//TODO 可以提供更详细的返回信息
 	public boolean add(AdDto adDto) {
 		Ad ad = new Ad();
 		ad.setTitle(adDto.getTitle());

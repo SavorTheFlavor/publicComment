@@ -21,7 +21,7 @@ public enum PageCodeEnum {
     private Integer code;
     private String msg;
     
-    public static final String KEY = "pageCode";
+    public static final String KEY = "pageCode";//返回页面时的key
     
     PageCodeEnum(Integer code,String msg) {
 	this.code = code;
