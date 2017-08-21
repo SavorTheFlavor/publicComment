@@ -3,7 +3,7 @@ var common = window.common || {};
 /**
  * 展示指定的消息内容。
  */
-common.showMessage = function(){
+common.showMessage = function(msg){
 	if(msg) {
 		alert(msg);
 	}

@@ -2,7 +2,10 @@ package com.me.comment.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -47,6 +50,21 @@ public class AdServiceImpl implements AdService {
 		}else{
 			return false;
 		}
+	}
+
+	@Override
+	public List<AdDto> searchByPage(AdDto adDto) {
+		Ad condition = new Ad();
+		BeanUtils.copyProperties(adDto, condition);//把名称相同的属性复制过去
+		
+		List<AdDto> result = new ArrayList<>();
+		List<Ad> adList = adDao.selectByPage(condition);
+		for (Ad ad : adList) {
+			AdDto adDto2 = new AdDto();
+			result.add(adDto2);
+			BeanUtils.copyProperties(ad, adDto2);
+		}
+		return result;
 	}
 
 }

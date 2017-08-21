@@ -7,7 +7,7 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
-<!-- 	<plugins> -->
-<!-- 		<plugin interceptor="org.imooc.dao.interceptor.PageInterceptor"/> -->
-<!-- 	</plugins> -->
+	<plugins>
+		<plugin interceptor="com.me.comment.dao.interceptor.PageInterceptor"/>
+	</plugins>
 </configuration>

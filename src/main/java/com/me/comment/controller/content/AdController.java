@@ -17,7 +17,10 @@ public class AdController {
 	private AdService adService;
 	
 	@RequestMapping
-	public String init(){
+	public String init(Model model){
+		AdDto adDto = new AdDto();
+		model.addAttribute("list", adService.searchByPage(adDto));
+		model.addAttribute("searchParam", adDto);
 		return "/content/adList";
 	}
 	
@@ -34,6 +37,13 @@ public class AdController {
 			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.ADD_FAIL);
 		};
 		return "/content/adAdd";
+	}
+	
+	@RequestMapping("/search")
+	public String search(Model model, AdDto adDto){
+		model.addAttribute("list", adService.searchByPage(adDto));
+		model.addAttribute("searchParam", adDto);
+		return "/content/adList";
 	}
 	
 }

@@ -7,4 +7,16 @@
 		insert into ad(title,img_file_name,link,weight)
 		 values(#{title},#{imgFileName},#{link},#{weight})
 	</insert>
+	
+	<!-- 虽然看起来与分页无关，但会被分页拦截器分页掉的， *ByPage -->
+	<select id="selectByPage" resultType="Ad"><!-- parameterType好像可以不写 -->
+		select id,title,img_file_name,link,weight from ad
+		<where>
+			<if test="title != null and title != ''">
+				title like '%'#{title}'%'
+			</if>
+		</where>
+		order by weight desc,id
+	</select>
+	
 </mapper>
