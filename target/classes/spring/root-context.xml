@@ -10,6 +10,7 @@
 
 
 	<!-- 配置文件上传解析器 -->
+	<!-- 这个bean必须放在这里，不然filter要用的时候取不到-->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
          <!-- 指定所上传文件的总大小不能超过20M。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 --> 
          <property name="maxUploadSize" value="20000000"/>

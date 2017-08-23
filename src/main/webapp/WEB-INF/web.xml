@@ -8,6 +8,7 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	
+	<!-- 最先加载到容器的... -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring/root-context.xml</param-value>
@@ -30,10 +31,12 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	<!-- 提前解析multipart/form-data的表单数据，否则下面那个filter就拿不到hidden里的表单_method的值了 -->
 	<filter>
 		<filter-name>MultipartFilter</filter-name>
 		<filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
 		<init-param>
+			<!-- 指定multipartResolver，但这个bean要在这之前已经加载 -->
 			<param-name>multipartResolverBeanName</param-name>
 			<param-value>multipartResolver</param-value>
 		</init-param>
@@ -42,7 +45,8 @@
 		<filter-name>MultipartFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
+	<!-- 通过表单里的input hidden映射tomcat所不支持的put和delete方法 -->
 	<filter>
 		<filter-name>hiddenHttpMethodFilter</filter-name>
 		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
