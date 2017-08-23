@@ -36,7 +36,7 @@ public class AdController {
 			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.ADD_SUCCESS);
 		}else{
 			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.ADD_FAIL);
-		};
+		}
 		return "/content/adAdd";
 	}
 	
@@ -48,6 +48,22 @@ public class AdController {
 																				//来获取变量名的，如果编译时不生成调试信息的话就挂了
 		adService.delete(id);
 		return "forward:/ad";												
+	}
+	@RequestMapping("/modifyInit")
+	public String modifyInit(@RequestParam("id")Long id, Model model){
+		AdDto adDto = adService.get(id);
+		model.addAttribute("modifyObj", adDto);
+		return "/content/adModify";
+	}
+	
+	@RequestMapping("/modify")
+	public String modify(AdDto adDto, Model model){
+		if(adService.modify(adDto)){
+			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.MODIFY_SUCCESS);
+		}else{
+			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.MODIFY_FAIL);
+		}
+		return "forward:/ad";	
 	}
 	
 	@RequestMapping("/search")

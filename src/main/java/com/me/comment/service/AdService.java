@@ -21,4 +21,14 @@ public interface AdService {
 	 * 删除广告
 	 */
 	boolean delete(Long id);
+	/**
+	 * 修改广告
+	 */
+	boolean modify(AdDto adDto);
+	/**
+	 * 查询广告
+	 * @param id
+	 * @return
+	 */
+	AdDto get(Long id);
 }

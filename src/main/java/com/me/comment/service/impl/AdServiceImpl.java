@@ -14,6 +14,7 @@ import com.me.comment.bean.Ad;
 import com.me.comment.dao.AdDao;
 import com.me.comment.dto.AdDto;
 import com.me.comment.service.AdService;
+import com.me.comment.util.FileUtil;
 
 @Service
 public class AdServiceImpl implements AdService {
@@ -34,23 +35,15 @@ public class AdServiceImpl implements AdService {
 		ad.setTitle(adDto.getTitle());
 		ad.setLink(adDto.getLink());
 		ad.setWeight(adDto.getWeight());
-		if(adDto.getImgFile() != null && adDto.getImgFile().getSize() > 0){
-			String filename = System.currentTimeMillis() + "_" + adDto.getImgFile().getOriginalFilename();
-			File folder = new File(adImageSavePath);
-			System.out.println("adImageSavePath----------------------------->"+adImageSavePath);
-			if(!folder.exists()){
-				folder.mkdirs();
-			}
-			File file = new File(adImageSavePath+filename);
-			try {
-				adDto.getImgFile().transferTo(file);
-				ad.setImgFileName(filename);
-				adDao.insert(ad);
-				return true;
-			} catch (IllegalStateException | IOException e) {
+		try {
+			String filename = FileUtil.save(adDto.getImgFile(), adImageSavePath);
+			if(filename == null){
 				return false;
 			}
-		}else{
+			ad.setImgFileName(filename);
+			adDao.insert(ad);
+			return true;
+		} catch (IllegalStateException | IOException e) {
 			return false;
 		}
 	}
@@ -79,6 +72,40 @@ public class AdServiceImpl implements AdService {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	@Override
+	public boolean modify(AdDto adDto) {
+		Ad ad = new Ad();
+		String filename  = null;
+		BeanUtils.copyProperties(adDto, ad);
+		try{
+			if(adDto.getImgFile() != null && adDto.getImgFile().getSize() > 0){
+				//保存新的图片
+				filename = FileUtil.save(adDto.getImgFile(), adImageSavePath);
+				ad.setImgFileName(filename);
+			}
+			if(adDao.update(ad)!=1){
+				return false;	
+			}
+			return true;
+		}catch(Exception e){
+			//TODO log info
+		}
+		//最后删除原来的图片,如果图片保存成功
+		if(filename != null){
+			return FileUtil.delete(adImageSavePath+adDto.getImgFileName());
+		}
+		return true;
+	}
+
+	@Override
+	public AdDto get(Long id) {
+		Ad ad = adDao.get(id);
+		AdDto adDto = new AdDto();
+		BeanUtils.copyProperties(ad, adDto);
+		adDto.setImg(adImageUrl+ad.getImgFileName());
+		return adDto;
 	}
 
 }

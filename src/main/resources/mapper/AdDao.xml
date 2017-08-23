@@ -19,8 +19,32 @@
 		order by weight desc,id
 	</select>
 	
+	<select id="get" resultType="Ad">
+		select id,title,img_file_name,link,weight from ad
+		where id = #{id}
+	</select>
+	
 	<delete id="delete">
 		delete from ad where id = #{id}
 	</delete>
+	
+	<update id="update">
+		update ad 
+		<set>
+			<if test="title != null">
+				title = #{title},
+			</if>
+			<if test="imgFileName != null">
+				img_file_name = #{imgFileName},
+			</if>
+			<if test="link != null">
+				link = #{link},
+			</if>
+			<if test="weight != null">
+				weight = #{weight},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
 	
 </mapper>

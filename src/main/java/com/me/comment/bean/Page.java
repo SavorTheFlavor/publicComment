@@ -18,6 +18,15 @@ public class Page {
 	    this.currentPage = 1;
 	    this.pageNumber = 5;
 	}
+	
+	
+
+	public Page(int currentPage, int pageNumber) {
+		this.currentPage = currentPage;
+		this.pageNumber = pageNumber;
+	}
+
+
 
 	public int getTotalNumber() {
 		return totalNumber;
