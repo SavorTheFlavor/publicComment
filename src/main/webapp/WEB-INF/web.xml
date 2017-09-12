@@ -14,7 +14,7 @@
 		<param-value>classpath:spring/root-context.xml</param-value>
 	</context-param>
 	
-	<listener>
+	<listener> <!-- 监听加载spring key为  ......Root的容器 -->
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
@@ -70,7 +70,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-		<jsp-config>
+	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.jsp</url-pattern>
 			<include-prelude>/WEB-INF/jsp/system/common.jsp</include-prelude>

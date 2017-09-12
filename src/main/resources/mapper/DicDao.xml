@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.comment.dao.DicDao">
+	
+	<!-- 虽然看起来与分页无关，但会被分页拦截器分页掉的， *ByPage -->
+	<select id="select" resultType="Dic"><!-- parameterType好像可以不写 -->
+		select type,code,name,weight from dic
+		<where>
+			<if test="type != null and type != ''">
+				and type=#{type}
+			</if>
+			<if test="code != null and code != ''">
+				and code=#{code}
+			</if>
+			<if test="name != null and name != ''">
+				and name=#{type}
+			</if>
+			order by weight
+		</where>
+	</select>
+	
+	
+</mapper>
