@@ -58,13 +58,14 @@
 	<update id="update" >
 		update business
 		<set>
-			<if test="img_file_name != null and img_file_name != ''">img_file_name = #{imgFileName}, </if>
 			<if test="price != null and price != ''">price = #{price}, </if>
 			<if test="distance != null and distance != ''">distance = #{distance}, </if>
 			<if test="number != null and number != ''">number = #{number}, </if>
 			<if test="title != null and title != '' ">title = #{title}, </if>
 			<if test="subtitle != null and subtitle !=''">subtitle = #{subtitle},</if>
-			<if test="desc != null and desc != ''">desc = #{desc},</if>
+			<!-- alert!! test里面取的是bean里面的字段，不能用下划线.... -->
+			<if test="imgFileName != null and imgFileName != ''">img_file_name = #{imgFileName}, </if>
+			<if test="desc != null and desc != ''">`desc` = #{desc},</if>
 			<if test="city != null and city != ''">city = #{city},</if>
 			<if test="category != null and category != ''">category = #{category},</if>
 		</set>

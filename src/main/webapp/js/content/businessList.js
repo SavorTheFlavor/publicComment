@@ -1,4 +1,4 @@
-function remove(id) {
+function remove22(id) {
 	$("#mainForm").attr("action",$("#basePath").val() + "/businesses/" + id);
 	$("#mainForm").submit();
 }

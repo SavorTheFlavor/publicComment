@@ -62,7 +62,7 @@
 												<a href="javascript:void(0);" onclick="modifyInit('${item.id}')">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;
 										
 <%-- 											<t:auth url="/businesses/${item.id}" method="DELETE"> --%>
-												<a href="javascript:void(0);" onclick="remove('${item.id}')">删除</a>
+												<a href="javascript:void(0);" onclick="remove22('${item.id}')">删除</a>
 <%-- 											</t:auth> --%>
 										</td>
 									</tr>

@@ -73,13 +73,19 @@ public class BussinessController {
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public String modify(BusinessDto dto, Model m){
 		businessService.update(dto);
-		return "/content/businessList";
+		return "redirect:/businesses"; //这里返回页面时用的仍然是put
+														//jsp页面不支持！
+														//可以重定向
+														//或者转到其他RequestMapping再返回
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public String delete(@PathVariable("id")Long id){
 		businessService.delete(id);
-		return "/content/businessList";
+		return "redirect:/businesses"; //这里返回页面时用的仍然是delete
+															//jsp页面不支持！
+															//可以重定向
+															//或者转到其他RequestMapping再返回
 	}
 	
 }
