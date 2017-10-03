@@ -72,6 +72,15 @@
 		where id=#{id}
 	</update>
 	
+	<!-- 应该分时间段统计，已统计过的就不要重复统计，不要一次更新全表 -->
+	<update id="updateNumber">
+		update business b, 
+		(select business_id,count(*) cou from orders
+		where create_time &gt;= #{param1} and create_time &lt;=#{param2}
+		group by business_id ) c 
+		set b.number = b.number + c.cou where b.id = business_id;
+	</update>
+	
 	<delete id="deleteById">
 		delete from business where id=#{_parameter}
 	</delete>

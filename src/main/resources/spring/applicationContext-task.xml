@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+	<!-- 扫描task包 -->
+	<context:component-scan base-package="com.me.comment.task" />
+
+	<!-- 启动定时任务 -->
+	<!-- cron表达式有在线生成工具 -->
+	<!-- 配置放xml里当需求变更时不需要重新编译代码，只需更改配置文件 -->
+	<task:scheduled-tasks>												<!--  秒  分 时 天 月 星期 年  -->
+		<task:scheduled ref="businessTask" method="synStar" cron="0 */5 * * * ?"/><!-- 到了0秒后，每5分钟执行一次....  3/5 从3秒开始每5秒执行一次 ...  -->
+		<task:scheduled ref="businessTask" method="synNum" cron="0 */4 * * * ?" /><!-- 同步已售数量  --> 
+	</task:scheduled-tasks>
+</beans>

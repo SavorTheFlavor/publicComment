@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.comment.dao.MemberDao">
+	
+	<select id="select" resultType="com.me.comment.bean.Member">
+		select id, phone, name, password
+		from member
+		<where>
+			<if test="id != null">and id=#{id}</if>
+			<if test="phone != null">and phone=#{phone}</if>
+			<if test="name != null and !&quot;&quot;.equals(name.trim())">
+				and name=#{name}
+			</if>
+			<if test="password != null and password != ''">
+				and password=#{password}
+			</if>
+		</where>
+	</select>
+	
+</mapper>

@@ -5,7 +5,7 @@ import com.me.comment.constant.ApiCodeEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@JsonInclude(Include.NON_NULL)
+@JsonInclude(Include.NON_NULL) //springmvc的注解，控制返回的json串中只有非空的字段才被包含进来
 public class ApiCodeDto {
 
 	private Integer errno;

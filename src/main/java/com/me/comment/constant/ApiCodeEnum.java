@@ -8,7 +8,7 @@ public enum ApiCodeEnum {
     CODE_INVALID(4,"验证码已失效！请重新请求验证码！"),
     CODE_ERROR(5,"验证码不正确！"),
     BUY_FAIL(6,"购买失败！"),
-    NOT_LOGGED(7,"没有登录！"),
+    NOT_LOGIN(7,"没有登录！"),
     NO_AUTH(8,"没有权限！"),;
     
     private Integer errno;

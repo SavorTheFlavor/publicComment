@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.comment.dao.UserDao">
+	
+	<select id="select" resultType="User">
+		select id,name,password,ch_name,group_id
+		from sys_user
+		<where>
+			<if test="id!=null and id!=''">and id=#{id}</if>
+			<if test="name!=null and name!=''">and name=#{name}</if>
+			<if test="password!=null and password!=''">and password=#{password}</if>
+			<if test="chName!=null and chName!=''">and ch_name=#{chName}</if>
+			<if test="groupId!=null and groupId!=''">and group_id=#{groupId}</if>
+		</where>
+		
+	</select>
+	
+	
+</mapper>
