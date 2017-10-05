@@ -41,4 +41,10 @@ public class Member {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", phone=" + phone + ", name=" + name + ", password=" + password + "]";
+	}
+	
 }

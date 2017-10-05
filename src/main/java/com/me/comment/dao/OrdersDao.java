@@ -32,4 +32,8 @@ public interface OrdersDao {
 	 * @return 订单列表
 	 */
 	List<Orders> select(Orders orders);
+	
+	List<Orders> selectByPage(Orders orders);
+
+	int deleteById(Long id);
 }

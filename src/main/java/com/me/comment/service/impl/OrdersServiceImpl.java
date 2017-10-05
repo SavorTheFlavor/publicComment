@@ -60,4 +60,26 @@ public class OrdersServiceImpl implements OrdersService {
 		return result;
 	}
 
+	@Override
+	public List<OrdersDto> searchByPage(OrdersDto ordersDto) {
+		List<OrdersDto> result = new ArrayList<OrdersDto>();
+		Orders ordersForSelect = new Orders();
+		BeanUtils.copyProperties(ordersDto, ordersForSelect);
+		List<Orders>  ordersList = ordersDao.selectByPage(ordersForSelect);
+		for(Orders orders : ordersList) {
+			OrdersDto ordersDto2 = new OrdersDto();
+			result.add(ordersDto2);
+			BeanUtils.copyProperties(orders, ordersDto2);
+			ordersDto2.setImg(businessImageUrl + orders.getBusiness().getImgFileName());
+			ordersDto2.setTitle(orders.getBusiness().getTitle());
+			ordersDto2.setCount(orders.getBusiness().getNumber());
+		}
+		return result;
+	}
+
+	@Override
+	public int deleteById(Long id) {
+		return ordersDao.deleteById(id);
+	}
+
 }

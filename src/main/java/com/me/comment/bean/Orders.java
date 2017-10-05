@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
-public class Orders {
+public class Orders extends BaseBean {
 	private Long id;
 	private Long memberId;
 	private Long businessId;

@@ -38,9 +38,21 @@
 		where id = #{id}
 	</update>
 	
+	<delete id="deleteById">
+		delete from orders where id=#{_parameter}
+	</delete>
+	
 	<select id="select" resultMap="OrdersResultMap">
-		select o.id,o.comment_state,o.price,b.img_file_name,b.title,b.number
-		from orders o,business b where o.business_id=b.id
+		select o.id,o.comment_state,o.price,b.img_file_name,b.title,b.number,phone
+		from orders o left join member m on m.id=o.member_id,business b where o.business_id=b.id
+		<if test="memberId != null">
+			and o.member_id = #{memberId}
+		</if>
+	</select>
+	
+	<select id="selectByPage" resultMap="OrdersResultMap">
+		select o.id,o.comment_state,o.price,b.img_file_name,b.title,b.number,phone
+		from orders o left join member m on m.id=o.member_id,business b where o.business_id=b.id
 		<if test="memberId != null">
 			and o.member_id = #{memberId}
 		</if>

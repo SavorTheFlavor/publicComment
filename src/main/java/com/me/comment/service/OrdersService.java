@@ -26,5 +26,12 @@ public interface OrdersService {
 	 * @return 会员的订单dto列表
 	 */
 	List<OrdersDto> getListByMemberId(Long memberId);
+	/**
+	 * 获取所有订单
+	 * @return
+	 */
+	List<OrdersDto> searchByPage(OrdersDto ordersDto);
+
+	int deleteById(Long id);
 
 }
