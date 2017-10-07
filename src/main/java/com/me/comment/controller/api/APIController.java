@@ -23,10 +23,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.me.comment.bean.Ad;
 import com.me.comment.bean.Page;
 import com.me.comment.constant.ApiCodeEnum;
+import com.me.comment.dao.CommentService;
 import com.me.comment.dto.AdDto;
 import com.me.comment.dto.ApiCodeDto;
 import com.me.comment.dto.BusinessDto;
 import com.me.comment.dto.BusinessListDto;
+import com.me.comment.dto.CommentForSubmitDto;
 import com.me.comment.dto.CommentListDto;
 import com.me.comment.dto.OrderForBuyDto;
 import com.me.comment.dto.OrdersDto;
@@ -65,6 +67,9 @@ public class APIController {
 	
 	@Autowired
 	private OrdersService orderService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 
 	/**
@@ -196,6 +201,37 @@ public class APIController {
 			dto = new ApiCodeDto(ApiCodeEnum.CODE_INVALID);
 		}
 		return dto;
+	}
+	
+	/**
+	 * 提交评论
+	 * @param dto
+	 * @return
+	 */
+	@RequestMapping(value="/submitComment", method=RequestMethod.POST)
+	public ApiCodeDto submitComment(CommentForSubmitDto dto){
+		ApiCodeDto result;
+		// TODO 需要完成的步骤：
+				// 1、校验登录信息：token、手机号
+				Long phone = memberService.getPhone(dto.getToken());
+				if(phone != null && phone.equals(dto.getUsername())){
+					// 2、根据手机号取出会员ID
+					Long memberId = memberService.getIdByPhone(phone);
+					// 3、根据提交上来的订单ID获取对应的会员ID，校验与当前登录的会员是否一致
+					OrdersDto order = orderService.getById(dto.getId());
+					if(order != null && order.getMemberId().equals(memberId)){
+						// 4、保存评论
+						commentService.add(dto);
+						result = new ApiCodeDto(ApiCodeEnum.SUCCESS);
+						// TODO
+						// 5、还有一件重要的事未做
+					}else{
+						result = new ApiCodeDto(ApiCodeEnum.NO_AUTH);
+					}
+				}else {
+					result = new ApiCodeDto(ApiCodeEnum.NOT_LOGIN);
+				}
+			return result;
 	}
 	
 //	@RequestMapping(value="/detail/comment/{page}/{id}",method=RequestMethod.GET)
