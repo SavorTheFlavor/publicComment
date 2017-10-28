@@ -14,6 +14,8 @@
 		<param-value>classpath:spring/root-context.xml</param-value>
 	</context-param>
 	
+	
+	
 	<listener> <!-- 监听加载spring key为  ......Root的容器 -->
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>

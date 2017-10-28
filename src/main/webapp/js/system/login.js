@@ -1,4 +1,5 @@
 $(function() {
+	//如果消息不为空，alert它
 	common.showMessage($("#message").val());
     // 验证信息
 	$("#mainForm").validate({
