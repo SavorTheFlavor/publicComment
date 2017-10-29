@@ -1,5 +1,6 @@
 package com.me.comment.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -30,6 +31,18 @@ public class UserServiceImpl  implements UserService{
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public List<UserDto> getList() {
+		List<UserDto> result = new ArrayList<UserDto>();
+		List<User> users = userDao.select(new User());
+		for (User user : users) {
+			UserDto userDto = new UserDto();
+			BeanUtils.copyProperties(user, userDto);
+			userDto.setpId(0);//zTree根节点的id
+		}
+		return result;
 	}
 
 }

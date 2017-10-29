@@ -14,8 +14,47 @@
 			<if test="chName!=null and chName!=''">and ch_name=#{chName}</if>
 			<if test="groupId!=null and groupId!=''">and group_id=#{groupId}</if>
 		</where>
-		
+		order by convert(ch_name using gbk) collate gbk_chinese_ci --order by Chinese pinyin
 	</select>
 	
+	<!-- 基本类型...只有一个参数时，_parameter；多个参数时，param1,param2...大概是这样... -->
+	<select id="selectById">
+		select id,ch_name,name,group_id from sys_user where id = #{_parameter}
+	</select>
+	
+	<!-- password是keyword -->
+	<!-- dual是一张虚拟表，只是为了满足select .... from ....的格式而存在的 -->
+	<!-- select #{name}里的name是传进来的对象的属性里的name -->
+	<insert id="insert">
+		insert into sys_user(name,ch_name,`password`)
+		select #{name},#{chName},#{password} from dual
+		where not exists(select 1 from sys_user where name=#{name})
+	</insert>
+	
+	<update id="update">
+		update sys_user
+		<set>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="chName != null">
+				ch_name = #{chName},
+			</if>
+			<if test="password != null">
+				password = #{password},
+			</if>
+			<if test="groupId != null">
+				group_id = #{groupId},
+			</if>
+			where id = #{id}
+			<if test="name != null"><!-- 必须得多嵌套一层，不然mysql会认为与update是同一张表，就语法出错什么的 -->
+				and not exists(select 1 from(select 1 from sys_user where name = #{name} and id != #{id}) a)
+			</if>
+		</set>
+	</update>
+	
+	<delete id="delete">
+		delete from sys_user where id=#{_parameter}
+	</delete>
 	
 </mapper>

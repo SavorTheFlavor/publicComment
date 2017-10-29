@@ -1,5 +1,7 @@
 package com.me.comment.service;
 
+import java.util.List;
+
 import com.me.comment.dto.UserDto;
 
 public interface UserService {
@@ -10,4 +12,6 @@ public interface UserService {
 	 *                false：用户名/密码错误
 	 */
 	boolean validate(UserDto userDto);
+
+	List<UserDto> getList();
 }

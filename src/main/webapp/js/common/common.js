@@ -4,7 +4,7 @@ var common = window.common || {};
  * 展示指定的消息内容。
  */
 common.showMessage = function(msg){
-	if(msg) {
+	if(msg){
 		alert(msg);
 	}
 }
@@ -14,9 +14,9 @@ common.showMessage = function(msg){
  * 对jQuery的ajax方法的二次封装
  */
 common.ajax = function(param) {
-	var mergeParam = $.extend({
-		timeout : 10000
-	} , param , {
+	var mergeParam = $.extend({//Merge the contents of two or more objects together into the first object.
+		timeout:10000
+	},param,{
 		complete : function(response) {
 			var url = response.getResponseHeader("url");
 			if(url) {
@@ -28,7 +28,7 @@ common.ajax = function(param) {
 			}
 		}
 	});
-	$.ajax(mergeParam);
+	$.ajax(mergeParam)
 }
 
 /**

@@ -14,6 +14,7 @@
 	    <script src="${basePath}/js/system/login.js" type="text/javascript"></script>
 	</head>
 	<body>
+	
 		<input type="hidden" id="basePath" value="${basePath}"/>
 		<input type="hidden" id="message" value="${pageCode.msg}"/>
 		<div class="main">

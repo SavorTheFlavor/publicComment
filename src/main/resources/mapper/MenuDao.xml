@@ -29,9 +29,9 @@
 
 	<insert id="insert">
 		insert into sys_menu(name,url,parent_id,order_num)
-		select #{name},#{url},#{parentId}
-		,ifnull((select max(order_num)+1 from sys_menu where parent_id=#{parentId}),1)
-	</insert>
+		select #{name},#{url},#{parentId},
+		ifnull(( select max(order_num)+1 from sys_menu where parent_id=#{parentId} ),1)
+	</insert><!-- ISNULL ( check_expression , replacement_value ) -->
 
 	<delete id="delete">
 		delete from sys_menu where id=#{_parameter}

@@ -37,7 +37,7 @@ public class MenuForZtreeDto {
 	 * 用来表示zTree上父子节点关系的父节点ID：
 	 * 与comboId原因相同。
 	 */
-	private String comboParentId;
+	private String comboParentId;//compound
 	
 	/**
 	 * 菜单表节点前缀
