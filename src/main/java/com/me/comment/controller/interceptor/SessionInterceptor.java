@@ -7,6 +7,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.me.comment.constant.PageCodeEnum;
 import com.me.comment.constant.SessionKeyConst;
 
 public class SessionInterceptor implements HandlerInterceptor {
@@ -31,7 +32,13 @@ public class SessionInterceptor implements HandlerInterceptor {
 		if(req.getSession().getAttribute(SessionKeyConst.USER_INFO)!=null){
 			return true;
 		}
-		req.getRequestDispatcher("/login/sessionTimeout").forward(req, resp);
+		//判断是否是ajax请求
+		if(req.getHeader("x-requested-with")!=null){
+			String basePath = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + req.getContextPath();
+			resp.setHeader("sessionTimeoutUrl", basePath+"/login/sessionTimeout");
+		}else{
+			req.getRequestDispatcher("/login/sessionTimeout").forward(req, resp);
+		}
 		return false;
 	}
 

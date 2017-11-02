@@ -22,6 +22,7 @@ common.ajax = function(param) {
 			if(url) {
 				location.href = url;
 			} else {
+				//如果原本有complete，就帮ta调用
 				if(param.complete && typeof param.complete == "function") {
 					param.complete();
 				}
