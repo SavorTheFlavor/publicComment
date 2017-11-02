@@ -83,18 +83,17 @@ public class GroupServiceImpl implements GroupService {
         GroupDto result = new GroupDto();
         List<MenuDto> menuDtoList = new ArrayList<>();
         result.setMenuDtoList(menuDtoList);
-
+        
         Group group = groupDao.selectMenuListById(id);
-
-        // 格式化数据
-        BeanUtils.copyProperties(group,result);
-        List<Menu> menuList = group.getMenuList();
-
-        for (Menu menu:menuList) {
-            MenuDto menuDtoTenmp = new MenuDto();
-            menuDtoList.add(menuDtoTenmp);
-            BeanUtils.copyProperties(menu,menuDtoTenmp);
-        }
+        
+        BeanUtils.copyProperties(group, result);
+        for (Menu menu: group.getMenuList()) {
+			MenuDto menuDto = new MenuDto();
+			BeanUtils.copyProperties(menu, menuDto);
+			menuDtoList.add(menuDto);
+		}
+        
+        
         result.setMenuList(null);
         return result;
     }

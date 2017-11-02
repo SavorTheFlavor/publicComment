@@ -56,6 +56,7 @@
 		where t.id=#{id}
 	</update>
 
+	<!-- 把之前的节点Id往后挪，添加的节点放在最前面 -->
 	<update id="updateOrderNumByParentId">
 		update sys_menu t set t.order_num = t.order_num + 1 where t.parent_id=#{_parameter}
 	</update>

@@ -14,4 +14,12 @@ public interface UserService {
 	boolean validate(UserDto userDto);
 
 	List<UserDto> getList();
+
+	boolean add(UserDto userDto);
+
+	UserDto getById(Long id);
+
+	boolean remove(Long id);
+
+	boolean modify(UserDto userDto);
 }

@@ -14,11 +14,11 @@
 			<if test="chName!=null and chName!=''">and ch_name=#{chName}</if>
 			<if test="groupId!=null and groupId!=''">and group_id=#{groupId}</if>
 		</where>
-		order by convert(ch_name using gbk) collate gbk_chinese_ci --order by Chinese pinyin
+		order by convert(ch_name using gbk) collate gbk_chinese_ci 
 	</select>
 	
 	<!-- 基本类型...只有一个参数时，_parameter；多个参数时，param1,param2...大概是这样... -->
-	<select id="selectById">
+	<select id="selectById" resultType="User">
 		select id,ch_name,name,group_id from sys_user where id = #{_parameter}
 	</select>
 	
@@ -35,16 +35,16 @@
 		update sys_user
 		<set>
 			<if test="name != null">
-				name = #{name},
+				name = #{name}
 			</if>
 			<if test="chName != null">
-				ch_name = #{chName},
+				ch_name = #{chName}
 			</if>
 			<if test="password != null">
-				password = #{password},
+				password = #{password}
 			</if>
 			<if test="groupId != null">
-				group_id = #{groupId},
+				group_id = #{groupId}
 			</if>
 			where id = #{id}
 			<if test="name != null"><!-- 必须得多嵌套一层，不然mysql会认为与update是同一张表，就语法出错什么的 -->

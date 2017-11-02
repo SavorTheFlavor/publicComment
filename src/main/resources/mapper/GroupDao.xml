@@ -22,8 +22,6 @@
 			<result column="order_num" property="orderNum"/>
 		</collection>
 		<collection property="actionList" javaType="list" resultMap="com.me.comment.dao.ActionDao.ActionResultMap"/>
-		
-		
 	</resultMap>
 
 	<select id="select" resultType="Group">
