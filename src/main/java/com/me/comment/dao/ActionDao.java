@@ -3,7 +3,6 @@ package com.me.comment.dao;
 import com.me.comment.bean.Action;
 
 public interface ActionDao {
-
     /**
      * 根据菜单ID删除动作
      * @param menuId 菜单ID

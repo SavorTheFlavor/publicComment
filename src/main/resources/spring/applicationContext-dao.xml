@@ -51,6 +51,7 @@
     	<property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
     
+    
     <!-- 扫描Dao接口包 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
     	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
