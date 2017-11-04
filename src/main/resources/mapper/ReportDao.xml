@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.me.comment.dao.ReportDao">
+	<select id="countOrder" resultType="java.util.HashMap"><!-- 真实环境下不应该放到hashMap里，要弄个定时任务，定时把数据更新到一张表里，需要时再从那张表查出数据 -->
+		<!-- 要把count(1)(long)转化为char，泛型编译时会被擦除 -->
+		select d.name categoryName,date_format(o.create_time,'%H') `hour`,cast(count(1) as CHAR) `count`
+		from business b,orders o,dic d
+		where b.id=o.business_id and b.category=d.code
+		and date_format(o.create_time,'%Y%m%d')
+		= date_format(date_sub(now(),interval 1 day),'%Y%m%d')
+		group by d.name,date_format(o.create_time,'%H')
+	</select>
+</mapper>
