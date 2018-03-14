@@ -1,46 +1,44 @@
-# �ͷ´��ڵ�����̨����ϵͳ
+# 低仿大众点评后台管理系统
 
-### ϵͳ���幦������
+### 系统整体设计(前端部分未实现)
 ![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/requiredment.png)
-### ���ݿ����
-���ݿ������Ҫ��Ϊ2�󲿷֣�ʡ���˾������ԣ�����ʵ����ϵ��
 
-#### ��һ���֣��Զ���Ϊ���ĵ�ʵ���ϵ��
+### 数据库设计
+
+#### 第一部分（以订单为中心的实体关系）
 
 ![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/E-R1.png)
 
-#### �ڶ����֣����û���Ϊ���ĵ�ʵ���ϵ��
+#### 第二部分（以用户组为中心的实体关系）
 ![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/E-R2.png)
 
 
-#### ��̨
+分为三种用户角色：系统管理员、普通管理员、业务员
 
-��Ϊ�����û���ɫ��ϵͳ����Ա����ͨ����Ա��ҵ��Ա
-
-* ��������Ա����
+* 超级管理员界面
 
 ![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/back_system.png)
 
-˵������������Աӵ����ߵ�Ȩ�ޣ�������ʾ���еĲ˵���
+说明：超级管理员拥有最高的权限，所以显示所有的菜单。
 
-1. ����û���ʾ������û��飬����û��飬��ʾ��Ӧ�Ѿ�����Ĳ˵��Ͷ���
-2. ���Զ��û����з����û��飬�Լ����Զ��û�����з���˵��Ͷ���
-3. ���Էֱ���û����û��顢�˵��Ͷ����һ����й���
+1. 点击用户显示分配的用户组，点击用户组，显示相应已经分配的菜单和动作
+2. 可以对用户进行分配用户组，以及可以对用户组进行分配菜单和动作
+3. 可以分别对用户、用户组、菜单和动作右击进行管理
 
-* ��ͨ����Ա����
+* 普通管理员界面
 
 ![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/back_system2.png)
 
-˵������ͨ����Աӵ�жԹ�桢�̻��Ĺ������Լ��Զ��������ۡ������鿴�Ĺ���
+说明：普通管理员拥有对广告、商户的管理，以及对订单、评论、报表查看的功能
 
-* ҵ��Ա����
+* 业务员界面
 
 ![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/back_system3.png)
 
-˵����ҵ��Աӵ�жԹ�桢�̻������������ѯ�Ĺ��ܣ���û�й����Ĺ��ܣ��Լ��Զ��������ۡ������鿴�Ĺ���
+说明：业务员拥有对广告、商户进行浏览、查询的功能，但没有管理的功能，以及对订单、评论、报表查看的功能
 
-* ����ͳ�ƹ���
+* 报表统计功能
 
 ![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/back_report.png)
 
-˵����������ʱ������1Сʱ������ͳ�Ƴ���ǰϵͳǰһ��Ķ��������ֲ�
+说明：按类别和时间间隔（1小时）分类统计出当前系统前一天的订单数量分布
