@@ -1,16 +1,15 @@
 # 低仿大众点评后台管理系统
 
 ### 系统整体功能需求
-![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/requiredment.png)
+![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/structure.png)
 ### 数据库设计
-数据库设计主要分为2大部分（省略了具体属性，体现实体间关系）
 
-#### 第一部分（以订单为中心的实体关系）
+#### 以订单为中心的实体关系
 
-![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/E-R1.png)
+![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/E-order.png)
 
-#### 第二部分（以用户组为中心的实体关系）
-![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/E-R2.png)
+#### 以用户组为中心的实体关系
+![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/E-user.png)
 
 
 #### 后台
@@ -19,7 +18,7 @@
 
 * 超级管理员界面
 
-![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/back_system.png)
+![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/back_root.png)
 
 说明：超级管理员拥有最高的权限，所以显示所有的菜单。
 
@@ -29,18 +28,18 @@
 
 * 普通管理员界面
 
-![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/back_system2.png)
+![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/back_admin.png)
 
 说明：普通管理员拥有对广告、商户的管理，以及对订单、评论、报表查看的功能
 
 * 业务员界面
 
-![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/back_system3.png)
+![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/back_service.png)
 
 说明：业务员拥有对广告、商户进行浏览、查询的功能，但没有管理的功能，以及对订单、评论、报表查看的功能
 
 * 报表统计功能
 
-![image](https://github.com/ZJX-09/imageForREADME/raw/master/myComentForGithubReadMe/back_report.png)
+![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/back_report.png)
 
 说明：按类别和时间间隔（1小时）分类统计出当前系统前一天的订单数量分布
