@@ -1,26 +1,14 @@
 # ä½ä»¿å¤§ä¼—ç‚¹è¯„åå°ç®¡ç†ç³»ç»Ÿ
 
-<<<<<<< HEAD
-### ÏµÍ³ÕûÌå¹¦ÄÜĞèÇó
+### ç³»ç»Ÿæ•´ä½“åŠŸèƒ½è®¾è®¡
 ![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/structure.png)
-### Êı¾İ¿âÉè¼Æ
 
-#### ÒÔ¶©µ¥ÎªÖĞĞÄµÄÊµÌå¹ØÏµ
-
-![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/E-order.png)
-
-#### ÒÔÓÃ»§×éÎªÖĞĞÄµÄÊµÌå¹ØÏµ
-=======
-### ç³»ç»Ÿæ•´ä½“åŠŸèƒ½éœ€æ±‚
-![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/structure.png)
 ### æ•°æ®åº“è®¾è®¡
 
 #### ä»¥è®¢å•ä¸ºä¸­å¿ƒçš„å®ä½“å…³ç³»
-
 ![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/E-order.png)
 
 #### ä»¥ç”¨æˆ·ç»„ä¸ºä¸­å¿ƒçš„å®ä½“å…³ç³»
->>>>>>> 97256294cf11c62c74e37d10c9c5a5013bf0cc1e
 ![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/E-user.png)
 
 
