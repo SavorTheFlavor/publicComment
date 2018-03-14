@@ -1,5 +1,10 @@
 # 低仿大众点评后台管理系统
 
+## 技术点
+  * Spring, Spring MVC, MyBatis
+  * Spring Task, Logback
+  * ECharts
+
 ### 系统整体功能设计
 ![image](https://github.com/SavorTheFlavor/publicComment/raw/master/images/structure.png)
 
