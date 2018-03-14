@@ -29,6 +29,11 @@ public class ApiCodeDto {
 		this.errno = apiCodeEnum.getErrno();
 		this.msg = apiCodeEnum.getMsg();
 	}
+	
+	public ApiCodeDto(ApiCodeEnum apiCodeEnum, String code) {
+		this.errno = apiCodeEnum.getErrno();
+		this.msg = apiCodeEnum.getMsg();
+	}
 
 	public Integer getErrno() {
 		return errno;

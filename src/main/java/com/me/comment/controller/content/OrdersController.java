@@ -23,7 +23,7 @@ public class OrdersController {
 	public String init(Model model) {
 		OrdersDto ordersDto = new OrdersDto();//page对象默认	    this.currentPage = 1; this.pageNumber = 5;
 		List<OrdersDto> ordersDtos = ordersService.searchByPage(ordersDto);
-		System.out.println(ordersDtos.get(0).getMember());
+		//System.out.println(ordersDtos.get(0).getMember());
 		model.addAttribute("ordersList", ordersDtos);
 		return "/content/orderList";
 	}

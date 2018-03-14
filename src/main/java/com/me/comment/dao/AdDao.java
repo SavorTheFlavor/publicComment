@@ -2,7 +2,6 @@ package com.me.comment.dao;
 
 import java.util.List;
 
-import com.me.comment.base.BaseDao;
 import com.me.comment.bean.Ad;
 
 public interface AdDao {
